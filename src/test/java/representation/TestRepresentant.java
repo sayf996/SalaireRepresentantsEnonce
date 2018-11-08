@@ -30,11 +30,14 @@ public class TestRepresentant {
 		r.enregistrerCA(0, CA);
 		
 		// On calcule son salaire pour le mois 0 avec 10% de part sur CA
-		float salaire = r.salaireMensuel(0,POURCENTAGE);
+		float salaire = r.salaireMensuel(0, POURCENTAGE);
 		
 		// A quel résultat on s'attend ?
 		
-		assertEquals(salaire, FIXE_BASTIDE + INDEMNITE_OCCITANIE + CA * POURCENTAGE, 0.01);
+		assertEquals(FIXE_BASTIDE + INDEMNITE_OCCITANIE + CA * POURCENTAGE, 
+			salaire,
+			0.01); // Comparaison de "float"
+			       // On donne la marge d'erreur tolérée (1ct)
 	}
 
 	@Test
@@ -51,7 +54,7 @@ public class TestRepresentant {
 		// A quel résultat on s'attend ?
 		// Le CA du mois doit avoir été initialisé à 0
 		
-		assertEquals(salaire, FIXE_BASTIDE + INDEMNITE_OCCITANIE , 0.01);
+		assertEquals(FIXE_BASTIDE + INDEMNITE_OCCITANIE, salaire, 0.01);
 	}
 
 	@Test
