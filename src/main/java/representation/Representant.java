@@ -72,7 +72,7 @@ public class Representant {
 	/**
 	 * Calcule le salaire mensuel de ce répresentant pour un mois donné
 	 * @param mois le numéro du mois (de 0 à 11)
-	 * @param pourcentage le pourcentage à appliquer sur le CA réalisé pour ce mois
+	 * @param pourcentage le pourcentage (>= 0 ) à appliquer sur le CA réalisé pour ce mois
 	 * @return le salaire pour ce mois, tenant compte du salaire fixe, de l'indemnité repas, et du pourcentage sur CA
 	 */
 	public float salaireMensuel(int mois, float pourcentage) {

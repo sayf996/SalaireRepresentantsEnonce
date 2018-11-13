@@ -34,10 +34,16 @@ public class TestRepresentant {
 		
 		// A quel résultat on s'attend ?
 		
-		assertEquals(FIXE_BASTIDE + INDEMNITE_OCCITANIE + CA * POURCENTAGE, 
+		assertEquals(
+			// Message si erreur
+			"Le salaire mensuel est incorrect",
+			// valeur attendue
+			FIXE_BASTIDE + INDEMNITE_OCCITANIE + CA * POURCENTAGE,
+			// Valeur calculée
 			salaire,
-			0.01); // Comparaison de "float"
-			       // On donne la marge d'erreur tolérée (1ct)
+			// Marge d'erreur tolérée
+			0.01
+		); // Comparaison de "float"
 	}
 
 	@Test
@@ -54,7 +60,12 @@ public class TestRepresentant {
 		// A quel résultat on s'attend ?
 		// Le CA du mois doit avoir été initialisé à 0
 		
-		assertEquals(FIXE_BASTIDE + INDEMNITE_OCCITANIE, salaire, 0.01);
+		assertEquals(
+			"Le CA n'est pas correctement initialisé",
+			FIXE_BASTIDE + INDEMNITE_OCCITANIE, 
+			salaire, 
+			0.01
+		);
 	}
 
 	@Test
@@ -65,7 +76,7 @@ public class TestRepresentant {
 			// On s'attend à recevoir une exception
 			r.enregistrerCA(0, -10000f);
 			// Si on arrive ici, c'est une erreur, le test doit échouer
-			fail(); // Forcer l'échec du test			
+			fail("Un CA négatif doit générer une exception"); // Forcer l'échec du test			
 		} catch (IllegalArgumentException e) {
 			// Si on arrive ici, c'est normal, c'est le comportement attendu
 		}
