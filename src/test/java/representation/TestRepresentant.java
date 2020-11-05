@@ -49,7 +49,6 @@ public class TestRepresentant {
 
 	@Test
 	public void testCAParDefaut() {
-		float CA = 50000f;
 		float POURCENTAGE= 0.1f; // 10% de pourcentage sur CA
 		
 		// On n'enregistre aucun CA
