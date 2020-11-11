@@ -1,5 +1,6 @@
 package representation;
 
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.fail;
 import org.junit.jupiter.api.BeforeEach;
@@ -9,6 +10,7 @@ public class TestRepresentant {
 	// Quelques constantes
 	private static final float FIXE_BASTIDE = 1000f;
 	private static final float INDEMNITE_OCCITANIE = 200f;
+        
 	
 	private Representant r; // L'objet à tester
 	private ZoneGeographique occitanie;
@@ -82,6 +84,65 @@ public class TestRepresentant {
 		}
 
 	}
+        @Test
+        public void numeroIsCorrectlyInitialized() {
+            assertEquals(36, r.getNumero(), "Initialisation incorrecte du numero");                                  
+        }
+        @Test
+        public void adresseIsCorrectlyInitialized() {
+            r.setAdresse("18 Rue Lavedan");
+            assertEquals("18 Rue Lavedan", r.getAdresse(), "Initialisation incorrecte du adresse");
+        }
+       @Test
+       public void nomIsCorrectlyInitialized() {
+           
+            assertEquals("Bastide", r.getNom(), "Initialisation incorrecte du nom");
+       }
+       @Test
+       public void prenomIsCorrectlyInitialized() {
+            assertEquals("Rémi", r.getPrenom(), "Initialisation incorrecte du prenom");
+       }
+       @Test
+        public void salaireFixIsCorrectlyInitialized() {
+            r.setSalaireFixe(FIXE_BASTIDE);
+            assertEquals(FIXE_BASTIDE, r.getSalaireFixe(), "Initialisation incorrecte du Salaire Fixe");
+        }
+        @Test
+        public void secteurIsCorrectlyInitialized() {
+            r.setSecteur(occitanie);
+            assertEquals(occitanie, r.getSecteur(), "Initialisation incorrecte du Secteur");
+        }
+        @Test
+	public void testMonthMoreThan11() {
+		
+		try {
+			
+			r.enregistrerCA(12, 10000f);
+			
+			fail("Un mois > 11 doit générer une exception"); 			
+		} catch (IllegalArgumentException e) {
+			
+		}
+        }
+        @Test
+	public void testMonthLessThan0() {
+		
+		try {
+			
+			r.enregistrerCA(-1, 10000f);
+			
+			fail("Un mois < 0 doit générer une exception"); 			
+		} catch (IllegalArgumentException e) {
+			
+		}
+        }
+        @Test
+        public void shouldReturnString() { 
+            r = new Representant(30, "Majid", "Saif", occitanie); 
+            assertEquals("Representant{" + "numero=" + 30 + ", nom=" + "Majid" + ", prenom=" + "Saif" + '}', r.toString(), "String is not returned correctly");
+                       
+        }}
+
+
+
 	
-	
-}
